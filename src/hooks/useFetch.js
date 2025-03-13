@@ -18,6 +18,8 @@ const useFetch = () => {
       const sentimentsData = await fetchSentiments(forceRefresh);
       const metricsData = await fetchHourlyMetrics(forceRefresh);
 
+      console.log('OPA', tweetsData, sentimentsData, metricsData);
+
       setTweets(tweetsData);
       setSentiments(sentimentsData);
       setMetrics(metricsData);

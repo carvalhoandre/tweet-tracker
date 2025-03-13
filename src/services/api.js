@@ -5,7 +5,10 @@ const API = axios.create({
     import.meta.env.VITE_API_ENVIROMENT === 'dev'
       ? import.meta.env.VITE_API_URL_LOCAL
       : import.meta.env.VITE_API_URL_PROD,
-  headers: { 'Content-Type': 'application/json' },
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  withCredentials: false,
 });
 
 const parseRequest = (config) => {
