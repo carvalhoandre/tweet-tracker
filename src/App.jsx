@@ -1,10 +1,14 @@
 import React from 'react';
-import Header from './components/Header';
+import { Header, Hero } from './components';
 
 function App() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
+
+      <main>
+        <Hero />
+      </main>
     </div>
   );
 }
