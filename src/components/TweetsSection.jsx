@@ -42,7 +42,7 @@ TweetsSection.propTypes = {
   tweets: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string.isRequired,
-      username: PropTypes.string.isRequired,
+      author_name: PropTypes.string.isRequired,
       created_at: PropTypes.string.isRequired,
     })
   ).isRequired,
