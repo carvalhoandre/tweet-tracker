@@ -1,8 +1,11 @@
 import React from 'react';
-import './App.css';
 
 function App() {
-  return <div></div>;
+  return (
+    <div className="flex items-center space-x-3">
+      <h1 className="text-2xl font-black tracking-tighter">X Collector</h1>
+    </div>
+  );
 }
 
 export default App;
