@@ -5,17 +5,14 @@ import Loading from './Loading';
 function MetricsSection({ metrics, loading }) {
   if (loading) return <Loading title="Carregando métricas" />;
 
-  // Calculate metrics from the array
   const totalTweets = metrics?.reduce((sum, hour) => sum + (hour.tweet_count || 0), 0) || 0;
 
-  // Find peak hour based on tweet_count
   const peakHourData =
     metrics?.reduce(
       (max, hour) => ((hour.tweet_count || 0) > (max.tweet_count || 0) ? hour : max),
       { tweet_count: 0 }
     ) || {};
 
-  // Calculate average sentiment
   const avgSentiment =
     metrics?.reduce((sum, hour) => sum + (hour.sentiment || 0), 0) / (metrics?.length || 1);
 
