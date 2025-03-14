@@ -8,9 +8,7 @@ function App() {
 
   React.useEffect(() => {
     fetchData();
-    const interval = setInterval(() => fetchData(), 300000); // Refresh every 5 minutes
-    return () => clearInterval(interval);
-  }, []);
+  }, [fetchData]);
 
   return (
     <div className="min-h-screen bg-gray-50">

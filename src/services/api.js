@@ -7,8 +7,9 @@ const API = axios.create({
       : import.meta.env.VITE_API_URL_PROD,
   headers: {
     'Content-Type': 'application/json',
+    Accept: 'application/json, text/plain, */*',
   },
-  withCredentials: false,
+  withCredentials: true,
 });
 
 const parseRequest = (config) => {

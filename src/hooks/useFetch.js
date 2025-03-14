@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchHourlyMetrics, fetchSentiments, fetchTweets } from '../services/tweets';
+import { fetchHourlyMetrics } from '../services/tweets';
 
 const useFetch = () => {
   const [tweets, setTweets] = React.useState([]);
@@ -14,20 +14,19 @@ const useFetch = () => {
     try {
       setLoading(true);
 
-      const tweetsData = await fetchTweets(forceRefresh);
-      const sentimentsData = await fetchSentiments(forceRefresh);
       const metricsData = await fetchHourlyMetrics(forceRefresh);
 
-      setTweets(tweetsData);
-      setSentiments(sentimentsData);
-      setMetrics(metricsData);
+      setTweets(metricsData.tweets);
+      setSentiments(metricsData.feelings);
+      setMetrics(metricsData.metrics);
     } catch (error) {
       setError(error.message);
       console.error('Error fetching data:', error.message);
     } finally {
       setLoading(false);
     }
-  });
+  }, []);
+
   return {
     tweets,
     sentiments,
