@@ -1,5 +1,12 @@
 import React from 'react';
-import { Header, Hero, TweetsSection, SentimentSection, MetricsSection } from './components';
+import {
+  Header,
+  Hero,
+  TweetsSection,
+  SentimentSection,
+  MetricsSection,
+  Footer,
+} from './components';
 import { useFetch } from './hooks/UseFetch';
 
 function App() {
@@ -19,6 +26,7 @@ function App() {
         <SentimentSection sentiments={sentiments} loading={loading} />
         <MetricsSection metrics={metrics} loading={loading} />
       </main>
+      <Footer />
     </div>
   );
 }
