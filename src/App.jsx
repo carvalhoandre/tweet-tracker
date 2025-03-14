@@ -1,10 +1,9 @@
 import React from 'react';
-import { Header, Hero } from './components';
+import { Header, Hero, TweetsSection, SentimentSection } from './components';
 import { useFetch } from './hooks/UseFetch';
-import TweetsSection from './components/TweetsSection';
 
 function App() {
-  const { fetchData, tweets, loading } = useFetch();
+  const { fetchData, tweets, sentiments, loading } = useFetch();
 
   React.useEffect(() => {
     fetchData();
@@ -17,6 +16,7 @@ function App() {
       <main>
         <Hero />
         <TweetsSection tweets={tweets} loading={loading} />
+        <SentimentSection sentiments={sentiments} loading={loading} />
       </main>
     </div>
   );
