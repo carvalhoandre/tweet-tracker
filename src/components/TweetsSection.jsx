@@ -4,12 +4,21 @@ import PropTypes from 'prop-types';
 import Loading from './Loading';
 import TweetsCard from './TweetsCard';
 
+const TWEETS_PER_PAGE = 6;
+
 function TweetsSection({ tweets, loading }) {
   const [searchTerm, setSearchTerm] = useState('');
+  const [displayCount, setDisplayCount] = useState(TWEETS_PER_PAGE);
 
-  const filteredTweets = tweets.filter((tweet) =>
-    tweet.text.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredTweets = tweets
+    .filter((tweet) => tweet.text.toLowerCase().includes(searchTerm.toLowerCase()))
+    .slice(0, displayCount);
+
+  const hasMoreTweets = displayCount < tweets.length;
+
+  const handleLoadMore = () => {
+    setDisplayCount((prevCount) => prevCount + TWEETS_PER_PAGE);
+  };
 
   if (loading) return <Loading />;
 
@@ -28,11 +37,22 @@ function TweetsSection({ tweets, loading }) {
           />
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {filteredTweets.map((tweet, index) => (
-            <TweetsCard key={index} tweet={tweet} />
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-8">
+          {filteredTweets.map((tweet) => (
+            <TweetsCard key={tweet.id || tweet.created_at} tweet={tweet} />
           ))}
         </div>
+
+        {hasMoreTweets && (
+          <div className="flex justify-center">
+            <button
+              onClick={handleLoadMore}
+              className="flex items-center space-x-2 bg-white text-black px-6 py-2 rounded-full hover:bg-orange-400 hover:text-white transition-all duration-300 font-medium"
+            >
+              <span>Carregar mais Tweets</span>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
