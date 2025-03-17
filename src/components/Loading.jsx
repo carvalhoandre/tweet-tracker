@@ -1,11 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FaSpinner } from 'react-icons/fa6';
 
-function Loading({ title }) {
+function Loading({ title = 'Carregando' }) {
   return (
-    <section id="posts" className="py-24">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-black tracking-tighter mb-8">{title}...</h2>
+    <section className="py-12 sm:py-16 lg:py-24">
+      <div className="container">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="flex flex-col items-center justify-center space-y-6">
+            <div className="relative">
+              <FaSpinner className="w-12 h-12 sm:w-16 sm:h-16 text-orange-400 animate-spin" />
+              <div className="absolute inset-0 border-t-4 border-orange-400 rounded-full animate-pulse opacity-25"></div>
+            </div>
+
+            <div className="space-y-4">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tighter">
+                {title}
+                <span className="animate-pulse">...</span>
+              </h2>
+              <p className="text-gray-500 text-sm sm:text-base">
+                Aguarde enquanto processamos os dados
+              </p>
+            </div>
+
+            <div className="w-full max-w-md mx-auto">
+              <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
+                <div className="h-full bg-orange-400 animate-loading-progress"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

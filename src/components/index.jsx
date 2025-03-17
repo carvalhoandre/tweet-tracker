@@ -4,3 +4,6 @@ export { default as TweetsSection } from './TweetsSection';
 export { default as SentimentSection } from './SentimentSection';
 export { default as MetricsSection } from './MetricsSection';
 export { default as Footer } from './Footer';
+export { default as ScrollToTopButton } from './ScrollToTopButton';
+export { default as Link } from './Link';
+export { default as SocialLink } from './SocialLink';

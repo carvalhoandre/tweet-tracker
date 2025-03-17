@@ -2,31 +2,50 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
 
+import useSentimentConfig from '../hooks/useSocialLinks';
+
+import SentimentCard from './SentimentCard';
+import getSentimentCategories from '../utils/arrays';
+
 function SentimentSection({ sentiments, loading }) {
+  const { SENTIMENT_CONFIG } = useSentimentConfig();
+
+  const sentimentCategories = getSentimentCategories(sentiments);
+
+  const totalSentiments = Object.values(sentimentCategories).reduce((a, b) => a + b, 0);
+
   if (loading) return <Loading title="Carregando análise de sentimento" />;
 
-  const sentimentCategories =
-    sentiments?.reduce((acc, tweet) => {
-      let category;
-      if (tweet.sentiment > 0) category = 'Positivo';
-      else if (tweet.sentiment < 0) category = 'Negativo';
-      else category = 'Neutro';
-
-      acc[category] = (acc[category] || 0) + 1;
-      return acc;
-    }, {}) || {};
-
   return (
-    <section id="sentiments" className="py-24 bg-black text-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-black tracking-tighter mb-12">Análise de Sentimentos</h2>
-        <div className="grid gap-8 md:grid-cols-3">
-          {Object.entries(sentimentCategories).map(([sentiment, count]) => (
-            <div key={sentiment} className="bg-white text-black rounded-2xl p-8 card-hover">
-              <h3 className="text-2xl font-bold mb-4 capitalize">{sentiment}</h3>
-              <p className="text-5xl font-black text-orange-400">{count}</p>
-            </div>
+    <section
+      id="sentiments"
+      className="py-12 sm:py-16 lg:py-24 bg-gradient-to-b from-black to-gray-900 text-white"
+    >
+      <div className="container">
+        <div className="max-w-4xl mx-auto mb-12 text-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter mb-4">
+            Análise de Sentimentos
+          </h2>
+          <p className="text-gray-400 text-lg sm:text-xl max-w-2xl mx-auto">
+            Distribuição dos sentimentos detectados nas postagens analisadas
+          </p>
+        </div>
+
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+          {Object.entries(SENTIMENT_CONFIG).map(([type]) => (
+            <SentimentCard
+              key={type}
+              type={type}
+              count={sentimentCategories[type] || 0}
+              total={totalSentiments}
+            />
           ))}
+        </div>
+
+        <div className="mt-12 max-w-4xl mx-auto text-center">
+          <p className="text-lg sm:text-xl text-gray-400">
+            Total de {totalSentiments} posts analisados
+          </p>
         </div>
       </div>
     </section>
