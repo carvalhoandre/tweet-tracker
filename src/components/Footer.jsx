@@ -15,7 +15,7 @@ function Footer() {
           <div className="text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start space-x-2 mb-4">
               <img src={Logo} alt="AC Logo" />
-              <h3 className="text-xl font-bold">AC Collector</h3>
+              <h3 className="text-xl font-bold">AC Tweet Tracker</h3>
             </div>
             <p className="text-gray-400 text-sm">
               Monitore e analise postagens do X (Twitter) com nossa ferramenta de coleta.
@@ -58,7 +58,7 @@ function Footer() {
             </div>
 
             <p className="text-sm text-gray-400">
-              © {currentYear} AC Collector. Todos os direitos reservados.
+              © {currentYear} AC Tweet Tracker. Todos os direitos reservados.
             </p>
           </div>
         </div>

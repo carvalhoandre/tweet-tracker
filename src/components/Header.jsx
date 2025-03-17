@@ -18,7 +18,7 @@ function Header() {
         <div className="flex items-center justify-between py-4">
           <div className="flex items-center space-x-3">
             <img src={Logo} alt="AC Logo" />
-            <h1 className="text-xl sm:text-2xl font-black tracking-tighter">AC Collector</h1>
+            <h1 className="text-xl sm:text-2xl font-black tracking-tighter">AC Tweet Tracker</h1>
           </div>
 
           <button
