@@ -5,7 +5,7 @@ import { MdDataExploration } from 'react-icons/md';
 import { GiHypersonicBolt } from 'react-icons/gi';
 
 const useDasboard = (metrics, totalTweets) => {
-  const [activeTab, setActiveTab] = useState('sentiment');
+  const [activeTab, setActiveTab] = useState('hype');
 
   // Transform metrics data for charts
   const data =
@@ -66,7 +66,12 @@ const useDasboard = (metrics, totalTweets) => {
       });
 
   const tabs = [
-    { id: 'hype', label: 'Hype', icon: GiHypersonicBolt, title: 'Evolução do Hype' },
+    {
+      id: 'hype',
+      label: 'Hype',
+      icon: GiHypersonicBolt,
+      title: 'Evolução do Hype',
+    },
     {
       id: 'sentiment',
       label: 'Sentimento',
