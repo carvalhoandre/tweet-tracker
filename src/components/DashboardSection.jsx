@@ -1,48 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import { FaChartLine, FaSmile } from 'react-icons/fa';
-import { MdDataExploration } from 'react-icons/md';
-import { GiHypersonicBolt } from 'react-icons/gi';
+import useDasboard from '../hooks/useDasboard';
 
 import { Loading, ChartDisplay, TabButton } from './index';
 
 function DashboardSection({ metrics, loading, totalTweets }) {
-  const [activeTab, setActiveTab] = useState('sentiment');
+  const { activeTab, chartData, tabs, setActiveTab } = useDasboard(metrics, totalTweets);
 
-  if (loading) return <Loading title="Carregando métricas..." />;
-
-  const data = metrics.map((metric) => ({
-    hour: `${metric.hour}:00`,
-    tweets: totalTweets || 0,
-    likes: metric.likes_mean || 0,
-    retweets: metric.retweets_mean || 0,
-    replies: metric.replies_mean || 0,
-    sentiment: metric.sentiment_mean || 0,
-    hype_score: metric.hype_score || 0,
-  }));
-
-  const tabs = [
-    { id: 'hype', label: 'Hype', icon: GiHypersonicBolt, title: 'Evolução do Hype' },
-    {
-      id: 'sentiment',
-      label: 'Sentimento',
-      icon: FaSmile,
-      title: 'Sentimento Médio ao Longo do Tempo',
-    },
-    {
-      id: 'engagement',
-      label: 'Engajamento',
-      icon: FaChartLine,
-      title: 'Engajamento Médio por Hora',
-    },
-    {
-      id: 'volume',
-      label: 'Volume',
-      icon: MdDataExploration,
-      title: 'Volume de Tweets ao Longo das Horas',
-    },
-  ];
+  if (loading) return <Loading title="Carregando Dashboards..." />;
 
   return (
     <section
@@ -74,7 +40,7 @@ function DashboardSection({ metrics, loading, totalTweets }) {
           {tabs.map(
             (tab) =>
               activeTab === tab.id && (
-                <ChartDisplay key={tab.id} type={tab.id} data={data} title={tab.title} />
+                <ChartDisplay key={tab.id} type={tab.id} data={chartData} title={tab.title} />
               )
           )}
         </div>
