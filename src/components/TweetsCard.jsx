@@ -14,7 +14,11 @@ function TweetsCard({ tweet }) {
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center">
-            <FaXTwitter className="text-white text-lg" />
+            {tweet.author_photo ? (
+              <img src={tweet.author_photo} alt={tweet.author_name} />
+            ) : (
+              <FaXTwitter className="text-white text-lg" />
+            )}
           </div>
           <div>
             <h3 className="font-bold text-lg">@{getAuthor(tweet.author_name)}</h3>
@@ -54,6 +58,7 @@ TweetsCard.propTypes = {
     likes: PropTypes.number,
     retweets: PropTypes.number,
     replies: PropTypes.number,
+    author_photo: PropTypes.string,
   }).isRequired,
 };
 

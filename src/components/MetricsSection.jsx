@@ -43,7 +43,6 @@ function MetricsSection({ metrics, loading }) {
             title="Total de Posts"
             value={totalTweets.toLocaleString()}
             icon={FaChartLine}
-            subtitle="Posts coletados nas últimas 24h"
           />
 
           <MetricCard
