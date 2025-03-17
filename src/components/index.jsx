@@ -7,3 +7,7 @@ export { default as Footer } from './Footer';
 export { default as ScrollToTopButton } from './ScrollToTopButton';
 export { default as Link } from './Link';
 export { default as SocialLink } from './SocialLink';
+export { default as DashboardSection } from './DashboardSection';
+export { default as ChartDisplay } from './ChartDisplay';
+export { default as TabButton } from './TabButton';
+export { default as Loading } from './Loading';

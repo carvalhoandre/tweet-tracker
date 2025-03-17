@@ -1,14 +1,15 @@
 import React from 'react';
 
-import { useFetch } from './hooks/UseFetch';
+import { useFetch } from './hooks/useFetch';
 
 import {
-  Header,
   Hero,
-  TweetsSection,
-  SentimentSection,
-  MetricsSection,
+  Header,
   Footer,
+  TweetsSection,
+  MetricsSection,
+  SentimentSection,
+  DashboardSection,
   ScrollToTopButton,
 } from './components';
 
@@ -47,7 +48,11 @@ function App() {
           </section>
 
           <section className="animate-fade-in [animation-delay:400ms]">
-            <MetricsSection metrics={metrics} loading={loading} />
+            <MetricsSection metrics={metrics} loading={loading} totalTweets={tweets.length} />
+          </section>
+
+          <section className="animate-fade-in [animation-delay:600ms]">
+            <DashboardSection metrics={metrics} loading={loading} totalTweets={tweets.length} />
           </section>
         </div>
       </main>

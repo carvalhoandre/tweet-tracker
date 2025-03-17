@@ -4,10 +4,8 @@ import { FaChartLine, FaClock, FaSmile } from 'react-icons/fa';
 import Loading from './Loading';
 import MetricCard from './MetricCard';
 
-function MetricsSection({ metrics, loading }) {
+function MetricsSection({ metrics, loading, totalTweets }) {
   if (loading) return <Loading title="Carregando métricas" />;
-
-  const totalTweets = metrics?.reduce((sum, hour) => sum + (hour.tweet_count || 0), 0) || 0;
 
   const peakHourData =
     metrics?.reduce(
@@ -60,7 +58,6 @@ function MetricsSection({ metrics, loading }) {
           />
         </div>
 
-        {/* Additional Engagement Stats */}
         <div className="mt-8 sm:mt-12 max-w-7xl mx-auto">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
             {[
@@ -88,16 +85,17 @@ MetricsSection.propTypes = {
   metrics: PropTypes.arrayOf(
     PropTypes.shape({
       hour: PropTypes.number,
-      tweet_count: PropTypes.number,
-      sentiment: PropTypes.number,
       likes_mean: PropTypes.number,
       replies_mean: PropTypes.number,
       retweets_mean: PropTypes.number,
-      shares_mean: PropTypes.number,
+      sentiment: PropTypes.number,
       sentiment_mean: PropTypes.number,
+      shares_mean: PropTypes.number,
+      tweet_count: PropTypes.number,
     })
   ),
   loading: PropTypes.bool.isRequired,
+  totalTweets: PropTypes.number,
 };
 
 export default MetricsSection;
