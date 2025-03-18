@@ -7,6 +7,18 @@ import getSentimentColor from '../utils/colors';
 import getAuthor from '../utils/texts';
 
 function TweetsCard({ tweet }) {
+  const highlightWord = (text) => {
+    return text.split(/(Neymar)/gi).map((part, index) =>
+      part.toLowerCase() === 'neymar' ? (
+        <span key={index} className="bg-orange-400 text-white px-2">
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  };
+
   return (
     <article
       className={`${getSentimentColor(tweet.sentiment)} rounded-2xl p-6 sm:p-8 border hover:transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl animate-fade-in`}
@@ -28,7 +40,7 @@ function TweetsCard({ tweet }) {
       </div>
 
       <div className="mb-6">
-        <p className="text-lg leading-relaxed">{tweet.text}</p>
+        <p className="text-lg leading-relaxed">{highlightWord(tweet.text)}</p>
       </div>
 
       <div className="flex items-center space-x-6 pt-4 border-t border-gray-200">
