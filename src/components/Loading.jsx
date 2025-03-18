@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FaSpinner } from 'react-icons/fa6';
 
-function Loading({ title = 'Carregando' }) {
+function Loading({ title = 'Carregando tweets' }) {
   return (
     <section className="py-12 sm:py-16 lg:py-24">
       <div className="container">
