@@ -10,7 +10,6 @@ function Loading({ title = 'Carregando' }) {
           <div className="flex flex-col items-center justify-center space-y-6">
             <div className="relative">
               <FaSpinner className="w-12 h-12 sm:w-16 sm:h-16 text-orange-400 animate-spin" />
-              <div className="absolute inset-0 border-t-4 border-orange-400 rounded-full animate-pulse opacity-25"></div>
             </div>
 
             <div className="space-y-4">
@@ -21,12 +20,6 @@ function Loading({ title = 'Carregando' }) {
               <p className="text-gray-500 text-sm sm:text-base">
                 Aguarde enquanto processamos os dados
               </p>
-            </div>
-
-            <div className="w-full max-w-md mx-auto">
-              <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
-                <div className="h-full bg-orange-400 animate-loading-progress"></div>
-              </div>
             </div>
           </div>
         </div>

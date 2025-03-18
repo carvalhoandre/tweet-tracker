@@ -6,6 +6,7 @@ import {
   Hero,
   Header,
   Footer,
+  Loading,
   TweetsSection,
   MetricsSection,
   SentimentSection,
@@ -39,21 +40,27 @@ function App() {
         </div>
 
         <div className="space-y-12 sm:space-y-16 lg:space-y-24">
-          <section className="animate-fade-in">
-            <TweetsSection tweets={tweets} loading={loading} />
-          </section>
+          {loading ? (
+            <Loading />
+          ) : (
+            <>
+              <section className="animate-fade-in">
+                <TweetsSection tweets={tweets} />
+              </section>
 
-          <section className="animate-fade-in [animation-delay:200ms]">
-            <SentimentSection sentiments={sentiments} loading={loading} />
-          </section>
+              <section className="animate-fade-in [animation-delay:200ms]">
+                <SentimentSection sentiments={sentiments} />
+              </section>
 
-          <section className="animate-fade-in [animation-delay:400ms]">
-            <MetricsSection metrics={metrics} loading={loading} totalTweets={tweets.length} />
-          </section>
+              <section className="animate-fade-in [animation-delay:400ms]">
+                <MetricsSection metrics={metrics} totalTweets={tweets.length} />
+              </section>
 
-          <section className="animate-fade-in [animation-delay:600ms]">
-            <DashboardSection metrics={metrics} loading={loading} totalTweets={tweets.length} />
-          </section>
+              <section className="animate-fade-in [animation-delay:600ms]">
+                <DashboardSection metrics={metrics} totalTweets={tweets.length} />
+              </section>
+            </>
+          )}
         </div>
       </main>
 

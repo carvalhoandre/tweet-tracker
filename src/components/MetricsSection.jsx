@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { FaChartLine, FaClock, FaSmile } from 'react-icons/fa';
-import Loading from './Loading';
+
 import MetricCard from './MetricCard';
 
-function MetricsSection({ metrics, loading, totalTweets }) {
-  if (loading) return <Loading title="Carregando métricas" />;
-
+function MetricsSection({ metrics, totalTweets }) {
   const peakHourData =
     metrics?.reduce(
       (max, hour) => ((hour.tweet_count || 0) > (max.tweet_count || 0) ? hour : max),
@@ -94,7 +93,6 @@ MetricsSection.propTypes = {
       tweet_count: PropTypes.number,
     })
   ),
-  loading: PropTypes.bool.isRequired,
   totalTweets: PropTypes.number,
 };
 

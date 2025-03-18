@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 
 import useDasboard from '../hooks/useDasboard';
 
-import { Loading, ChartDisplay, TabButton } from './index';
+import { ChartDisplay, TabButton } from './index';
 
-function DashboardSection({ metrics, loading, totalTweets }) {
+function DashboardSection({ metrics, totalTweets }) {
   const { activeTab, chartData, tabs, setActiveTab } = useDasboard(metrics, totalTweets);
-
-  if (loading) return <Loading title="Carregando Dashboards..." />;
 
   return (
     <section
@@ -62,7 +60,6 @@ DashboardSection.propTypes = {
       tweet_count: PropTypes.number,
     })
   ),
-  loading: PropTypes.bool.isRequired,
   totalTweets: PropTypes.number,
 };
 

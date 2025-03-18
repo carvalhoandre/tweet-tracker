@@ -1,20 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Loading from './Loading';
 
 import useSentimentConfig from '../hooks/useSocialLinks';
 
 import SentimentCard from './SentimentCard';
 import getSentimentCategories from '../utils/arrays';
 
-function SentimentSection({ sentiments, loading }) {
+function SentimentSection({ sentiments }) {
   const { SENTIMENT_CONFIG } = useSentimentConfig();
 
   const sentimentCategories = getSentimentCategories(sentiments);
 
   const totalSentiments = Object.values(sentimentCategories).reduce((a, b) => a + b, 0);
-
-  if (loading) return <Loading title="Carregando análise de sentimento" />;
 
   return (
     <section
@@ -59,7 +56,6 @@ SentimentSection.propTypes = {
       text: PropTypes.string,
     })
   ),
-  loading: PropTypes.bool.isRequired,
 };
 
 export default SentimentSection;

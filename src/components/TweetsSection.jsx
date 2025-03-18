@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import Loading from './Loading';
 import TweetsCard from './TweetsCard';
 
 const TWEETS_PER_PAGE = 6;
 
-function TweetsSection({ tweets, loading }) {
+function TweetsSection({ tweets }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [displayCount, setDisplayCount] = useState(TWEETS_PER_PAGE);
 
@@ -19,8 +18,6 @@ function TweetsSection({ tweets, loading }) {
   const handleLoadMore = () => {
     setDisplayCount((prevCount) => prevCount + TWEETS_PER_PAGE);
   };
-
-  if (loading) return <Loading />;
 
   return (
     <section id="posts" className="py-12 sm:py-16 lg:py-24">
@@ -87,7 +84,6 @@ TweetsSection.propTypes = {
       created_at: PropTypes.string.isRequired,
     })
   ).isRequired,
-  loading: PropTypes.bool.isRequired,
 };
 
 export default TweetsSection;
