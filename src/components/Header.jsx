@@ -33,7 +33,7 @@ function Header() {
             <Link href="home" title="Home" />
             <Link href="posts" title="Posts" />
             <Link href="sentiments" title="Sentimentos" />
-            <Link href="metrics" title="Metricas" />
+            <Link href="metrics" title="Métrica" />
           </div>
         </div>
 
@@ -61,7 +61,7 @@ function Header() {
               />
               <Link
                 href="metrics"
-                title="Metricas"
+                title="Métrica"
                 className="px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors"
               />
             </div>
