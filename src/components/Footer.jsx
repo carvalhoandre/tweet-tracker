@@ -28,7 +28,7 @@ function Footer() {
               <Link href="home" title="Home" className={classLink} />
               <Link href="posts" title="Posts" className={classLink} />
               <Link href="sentiments" title="Sentimentos" className={classLink} />
-              <Link href="metrics" title="Metricas" className={classLink} />
+              <Link href="metrics" title="Métrica" className={classLink} />
             </nav>
           </div>
 
