@@ -16,7 +16,11 @@ const useFetch = () => {
 
       const metricsData = await fetchHourlyMetrics(forceRefresh);
 
-      setTweets(metricsData.tweets);
+      const sortedTweets = metricsData.tweets.sort((a, b) => {
+        return new Date(b.created_at) - new Date(a.created_at);
+      });
+
+      setTweets(sortedTweets);
       setSentiments(metricsData.feelings);
       setMetrics(metricsData.metrics);
     } catch (error) {

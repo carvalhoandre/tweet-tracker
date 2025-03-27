@@ -9,9 +9,21 @@ function TweetsSection({ tweets }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [displayCount, setDisplayCount] = useState(TWEETS_PER_PAGE);
 
-  const filteredTweets = tweets
-    .filter((tweet) => tweet.text.toLowerCase().includes(searchTerm.toLowerCase()))
-    .slice(0, displayCount);
+  const filteredTweets = React.useMemo(() => {
+    if (!tweets || !Array.isArray(tweets)) return [];
+
+    const normalizedSearchTerm = searchTerm.trim().toLowerCase();
+    if (!normalizedSearchTerm) {
+      return tweets.slice(0, displayCount);
+    }
+
+    return tweets
+      .filter((tweet) => {
+        if (!tweet?.text) return false;
+        return tweet.text.toLowerCase().includes(normalizedSearchTerm);
+      })
+      .slice(0, displayCount);
+  }, [tweets, searchTerm, displayCount]);
 
   const hasMoreTweets = displayCount < tweets.length;
 
