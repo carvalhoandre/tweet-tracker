@@ -27,7 +27,11 @@ function TweetsCard({ tweet }) {
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center">
             {tweet.author_photo ? (
-              <img src={tweet.author_photo} alt={tweet.author_name} />
+              <img
+                src={tweet.author_photo}
+                alt={tweet.author_name}
+                className="w-10 h-10 rounded-full"
+              />
             ) : (
               <FaXTwitter className="text-white text-lg" />
             )}
