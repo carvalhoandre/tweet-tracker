@@ -67,9 +67,16 @@ function TweetsSection({ tweets }) {
           </div>
         ) : (
           <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8">
-            {filteredTweets.map((tweet) => (
-              <TweetsCard key={tweet.id || tweet.created_at} tweet={tweet} />
-            ))}
+            {filteredTweets.map((tweet, index) => {
+              const uniqueKey =
+                tweet.id ||
+                (tweet.author_name &&
+                  tweet.created_at &&
+                  `${tweet.author_name}-${tweet.created_at}`) ||
+                index;
+
+              return <TweetsCard key={uniqueKey} tweet={tweet} />;
+            })}
           </div>
         )}
 
