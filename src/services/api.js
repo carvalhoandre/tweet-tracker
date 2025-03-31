@@ -8,6 +8,7 @@ const API = axios.create({
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json, text/plain, */*',
+    'X-API-Key': import.meta.env.VITE_API_KEY,
   },
   withCredentials: true,
 });
