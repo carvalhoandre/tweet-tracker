@@ -1,13 +1,21 @@
 # Tweet Tracker 🐦
 
 <p align="center">
-  <img src="./.gitassets/capa.png" alt="Tweet Tracker">
+  <img src="./.gitassets/capa.png" alt="Tweet Tracker" />
 </p>
 
+<p align="center">
+  <a href="https://tweet.andreleitecarvalho.space/" target="_blank">
+    🚀 <strong>Visite agora: Tweet Tracker</strong>
+  </a>
+</p>
 
-<a href="https://app.netlify.com/sites/actweettracker/deploys">
-  <img src="https://api.netlify.com/api/v1/badges/700f2fbb-5044-4fd7-8fde-6234422c94f6/deploy-status" alt="Netlify Status">
-</a>
+<p align="center">
+  <a href="https://app.netlify.com/sites/actweettracker/deploys">
+    <img src="https://api.netlify.com/api/v1/badges/700f2fbb-5044-4fd7-8fde-6234422c94f6/deploy-status" alt="Netlify Status" />
+  </a>
+</p>
+
 
 O **Tweet Tracker** é um aplicativo web projetado para buscar, analisar e exibir tweets em tempo real usando a API [**Coletor de Tweets**](https://github.com/carvalhoandre?tab=repositories). Inicialmente focado em tweets relacionados a `Neymar`, fornece insights através de feeds ao vivo, análise de sentimentos e métricas horárias.
 
