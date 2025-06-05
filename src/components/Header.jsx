@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
+import { Link as RouterLink } from 'react-router-dom';
 
 import Link from './Link';
 
@@ -34,13 +35,18 @@ function Header() {
             <Link href="posts" title="Posts" />
             <Link href="sentiments" title="Sentimentos" />
             <Link href="metrics" title="Métrica" />
+            <RouterLink
+              to="/report"
+              className="text-white hover:text-gray-300 transition-colors"
+            >
+              Report
+            </RouterLink>
           </div>
         </div>
 
         <div
-          className={`lg:hidden ${
-            isMenuOpen ? 'max-h-64 opacity-100 visible' : 'max-h-0 opacity-0 invisible'
-          } transition-all duration-300 ease-in-out overflow-hidden`}
+          className={`lg:hidden ${isMenuOpen ? 'max-h-64 opacity-100 visible' : 'max-h-0 opacity-0 invisible'
+            } transition-all duration-300 ease-in-out overflow-hidden`}
         >
           <div className="py-4 space-y-4 border-t border-gray-800">
             <div className="flex flex-col space-y-4">
@@ -64,6 +70,12 @@ function Header() {
                 title="Métrica"
                 className="px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors"
               />
+              <RouterLink
+                to="/report"
+                className="px-4 py-2 hover:bg-gray-800 rounded-lg transition-colors text-white"
+              >
+                Report
+              </RouterLink>
             </div>
           </div>
         </div>
