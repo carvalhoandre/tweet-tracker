@@ -28,7 +28,7 @@ function Report() {
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
             <div className="container mx-auto px-4 py-8">
-                <h1 className="text-3xl font-bold text-gray-900 mb-6">Report</h1>
+                <h1 className="text-3xl font-bold text-gray-900 mb-6">Relatórios</h1>
                 <div className="bg-white rounded-lg shadow-lg p-6">
                     {
                         loading ? <h1>Carregando...</h1>
@@ -40,7 +40,7 @@ function Report() {
                                 </div>
                                 :
                                 <p className="text-gray-600">
-                                    This is the report page. You can add your report content here.
+                                    Esta é a página do relatório. Você pode adicionar o conteúdo do seu relatório aqui.
                                 </p>
                     }
                 </div>
@@ -49,4 +49,4 @@ function Report() {
     );
 }
 
-export default Report; 
+export default Report;
